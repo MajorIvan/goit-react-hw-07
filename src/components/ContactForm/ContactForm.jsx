@@ -1,6 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { nanoid } from "nanoid";
 import { useId } from "react";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/operations";
@@ -30,9 +29,7 @@ export default function ContactForm() {
       }}
       validationSchema={userSchema}
       onSubmit={(values, actions) => {
-        dispatch(
-          addContact({ id: nanoid(), name: values.name, phone: values.number })
-        );
+        dispatch(addContact({ name: values.name, phone: values.number }));
         actions.resetForm();
       }}
     >
